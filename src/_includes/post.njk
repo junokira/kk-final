@@ -10,7 +10,7 @@
   <main class="max-w-3xl mx-auto p-6">
     <h1 class="text-5xl font-bold mb-4 text-center">{{ title }}</h1>
     <p class="text-sm text-gray-500 text-center mb-8">
-      Posted on {{ date | date("PPP") }}
+      Posted on {{ date | formatDate("PPP") }}
     </p>
 
     {% if cover %}
