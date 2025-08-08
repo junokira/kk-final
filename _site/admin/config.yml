@@ -1,10 +1,12 @@
 backend:
+  # If you stay on GitHub Pages, keep `github` for now (see section 2 below)
   name: github
-  repo: junokira/kk  # ← 🔁 change this to your actual repo
-  branch: main                         # or 'master', depending on your default branch
+  repo: junokira/kk-final
+  branch: main
+  auth_endpoint: /admin/callback.html   
 
-media_folder: "static/uploads"         # where uploaded images are stored (inside the repo)
-public_folder: "/static/uploads"       # how they're referenced in HTML
+media_folder: "static/uploads"
+public_folder: "/static/uploads"
 
 collections:
   - name: "posts"
@@ -17,6 +19,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Cover Image", name: "cover", widget: "image", required: false }
+      - { label: "Category", name: "category", widget: "select", options: ["fashion", "music", "events", "discourse"] }
       - { label: "Tags", name: "tags", widget: "list", required: false }
       - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
