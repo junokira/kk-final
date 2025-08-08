@@ -1,0 +1,609 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Kwality & Klarity</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Kwality & Klarity is a South African online/digital publication platform founded by Tumisho Mathekgane. The platform focuses on documentation & promotion of young artist with music, fashion or related pop cultures.">
+    <meta name="keywords" content="Kwality & Klarity, quality, clarity, business, services, newsletter, updates, music, fashion, pop culture, FAQ, frequently asked questions, digital publication">
+    <link rel="canonical" href="https://www.kwalityandklarity.com/"> <!-- Replace with your actual domain -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:title" content="Kwality & Klarity">
+    <meta property="og:description" content="Kwality & Klarity is a South African online/digital publication platform founded by Tumisho Mathekgane. The platform focuses on documentation & promotion of young artist with music, fashion or related pop cultures.">
+    <meta property="og:image" content="https://i.ibb.co/Fqd8fPfS/k-k-png.png"> <!-- Use your main logo image URL -->
+    <meta property="og:url" content="https://www.kwalityandklarity.com/"> <!-- Replace with your actual domain -->
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@KwalityKlarity"> <!-- Replace with your Twitter handle if applicable -->
+    <meta name="twitter:title" content="Kwality & Klarity">
+    <meta name="twitter:description" content="Kwality & Klarity is a South African online/digital publication platform founded by Tumisho Mathekgane. The platform focuses on documentation & promotion of young artist with music, fashion or related pop cultures.">
+    <meta name="twitter:image" content="https://i.ibb.co/Fqd8fPfS/k-k-png.png"> <!-- Use your main logo image URL -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.ibb.co/Jj74RR2Z/IMG-9717.png" type="image/png"> <!-- Use your small logo or a dedicated favicon -->
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Using a custom font for a retro/tech aesthetic */
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        body {
+            font-family: 'VT323', monospace;
+        }
+        /* Class to center the main content area vertically */
+        .flex-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Footer styling from user's provided code */
+        footer {
+            font-size: 0.9rem;
+            text-align: center;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .footer-email {
+            margin-bottom: 0.6rem;
+        }
+
+        .social-icons {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-icons a {
+            margin: 0 12px;
+            text-decoration: none;
+            color: inherit;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.5s;
+        }
+
+        .social-icons svg,
+        .social-icons img {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+            transition: fill 0.5s;
+        }
+    </style>
+</head>
+<body class="bg-white text-black min-h-screen flex flex-col justify-between">
+
+    <!-- Header Section -->
+    <div class="flex justify-center p-4">
+        <!-- Logo is now bigger and is a clickable link to the home page -->
+        <a class="cursor-pointer" onclick="showPage('home')">
+            <!-- Increased logo size on medium and larger screens -->
+            <img alt="Black globe icon with star on top right" class="w-32 h-32 md:w-48 md:h-48" height="128" src="https://i.ibb.co/mKbxmzd/K-K-black.webp" width="128"/>
+        </a>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav id="main-nav" class="flex flex-col items-center md:flex-row md:justify-center space-y-8 md:space-y-0 md:space-x-16 max-w-full px-4 text-3xl md:text-4xl lg:text-5xl leading-[36px] z-10">
+        <a class="whitespace-nowrap cursor-pointer hover:underline" onclick="showPage('blog')">
+            BLOG
+        </a>
+        <a class="whitespace-nowrap cursor-pointer hover:underline" onclick="showPage('podcast')">
+            PODCAST
+        </a>
+        <a class="whitespace-nowrap cursor-pointer hover:underline" onclick="showPage('prospect-form')">
+            PROSPECT FORM
+        </a>
+        <a class="whitespace-nowrap cursor-pointer hover:underline" onclick="showPage('about')">
+            ABOUT
+        </a>
+    </nav>
+    
+    <!-- Main content area where pages will be displayed -->
+    <div id="main-content" class="flex-grow p-8 sm:p-16 flex justify-center">
+        <!-- Content will be injected here by JavaScript -->
+    </div>
+
+    <!-- Footer with social media icons from user's provided code -->
+    <footer class="mt-16 text-black">
+        <div class="footer-email">
+            <a href="mailto:info@kwalityandklarity.com" style="color: inherit; text-decoration: none;">
+                info@kwalityandklarity.com
+            </a>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/kwalityandklarity/" target="_blank" title="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.25 5.25 0 0 1 21.5 7.25v8.5A5.25 5.25 0 0 1 16.25 21h-8.5A5.25 5.25 0 0 1 2.5 15.75v-8.5A5.25 5.25 0 0 1 7.75 2zm0 1.5A3.75 3.75 0 0 0 4 7.25v8.5A3.75 3.75 0 0 0 7.75 19.5h8.5A3.75 3.75 0 0 0 20 15.75v-8.5A3.75 3.75 0 0 0 16.25 3.5h-8.5zm9.25 2.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"/></svg>
+            </a>
+            <a href="https://x.com/KwalityKlarity" target="_blank" title="X">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@kwalityandklarity" target="_blank" title="TikTok">
+                <!-- TikTok icon replaced with a standard image link -->
+                <img src="https://placehold.co/28x28/000000/FFFFFF?text=TikTok" alt="TikTok Logo" onerror="this.src='https://placehold.co/28x28/000000/FFFFFF?text=TikTok';" />
+            </a>
+        </div>
+        <div>© 2025 Kwality & Klarity. All rights reserved.</div>
+    </footer>
+
+    <script>
+        // Store the HTML for each page in JavaScript variables
+        const pages = {
+            'home': ``,
+            'blog': `
+                <div class="flex flex-col items-center text-center">
+                    <h2 class="text-4xl font-bold mb-8">THE BLOG</h2>
+                    <div id="filter-container" class="flex flex-wrap justify-center space-x-4 sm:space-x-8 mb-8 text-2xl">
+                        <button class="filter-btn border-b-2 border-black pb-1 focus:outline-none" data-filter="all">All</button>
+                        <button class="filter-btn hover:underline focus:outline-none" data-filter="fashion">Fashion</button>
+                        <button class="filter-btn hover:underline focus:outline-none" data-filter="music">Music</button>
+                        <button class="filter-btn hover:underline focus:outline-none" data-filter="events">Events</button>
+                        <button class="filter-btn hover:underline focus:outline-none" data-filter="discourse">Discourse</button>
+                    </div>
+                    <!-- Updated blog posts container for a two-column grid on desktop -->
+                    <div id="blog-posts-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center w-full max-w-5xl mt-8">
+                        <!-- Blog posts will be injected here by filterPosts() -->
+                    </div>
+                </div>
+            `,
+            'podcast': `
+                <div class="flex flex-col items-center text-center">
+                    <h2 class="text-4xl font-bold mb-8">PODCAST</h2>
+                    <p class="text-lg mb-4 max-w-2xl">
+                        Explore a collection of short-form and long-form video content documenting and promoting young artists in music, fashion, and pop culture.
+                    </p>
+                    
+                    <!-- Short-form Videos (Shorts) -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 w-full max-w-6xl">
+                        <div class="relative w-full" style="padding-top: 177.7778%;">
+                            <iframe 
+                                class="absolute top-0 left-0 w-full h-full"
+                                src="https://www.youtube.com/embed/0k64j1Spffg" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="relative w-full" style="padding-top: 177.7778%;">
+                            <iframe 
+                                class="absolute top-0 left-0 w-full h-full"
+                                src="https://www.youtube.com/embed/E5-OfbZUc5E" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="relative w-full" style="padding-top: 177.7778%;">
+                            <iframe 
+                                class="absolute top-0 left-0 w-full h-full"
+                                src="https://www.youtube.com/embed/5jKuBE1OrEQ" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="relative w-full" style="padding-top: 177.7778%;">
+                            <iframe 
+                                class="absolute top-0 left-0 w-full h-full"
+                                src="https://www.youtube.com/embed/TNLaPAs9mmU" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="relative w-full" style="padding-top: 177.7778%;">
+                            <iframe 
+                                class="absolute top-0 left-0 w-full h-full"
+                                src="https://www.youtube.com/embed/7L9spG_p_Tc" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- K&K Radio (Long-form Videos) -->
+                    <h3 class="text-3xl font-bold mt-16 mb-8 text-center">K&K Radio</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+                        <div class="flex flex-col items-center">
+                            <div class="relative w-full" style="padding-top: 56.25%;">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full"
+                                    src="https://www.youtube.com/embed/qtguifcfw5c" 
+                                    title="The Story" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <p class="mt-2 text-lg font-bold text-center">The Story</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="relative w-full" style="padding-top: 56.25%;">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full"
+                                    src="https://www.youtube.com/embed/tsHLDkZhlvI" 
+                                    title="The Importance of Self-Belief" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <p class="mt-2 text-lg font-bold text-center">The Importance of Self-Belief</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="relative w-full" style="padding-top: 56.25%;">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full"
+                                    src="https://www.youtube.com/embed/isszwKqkCM4" 
+                                    title="Fear Nothing" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <p class="mt-2 text-lg font-bold text-center">Fear Nothing</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="relative w-full" style="padding-top: 56.25%;">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full"
+                                    src="https://www.youtube.com/embed/lFhhbx2xA1E" 
+                                    title="Creativity is Life" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <p class="mt-2 text-lg font-bold text-center">Creativity is Life</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="relative w-full" style="padding-top: 56.25%;">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full"
+                                    src="https://www.youtube.com/embed/BVjdJjVUXAc" 
+                                    title="Give Yourself Time" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <p class="mt-2 text-lg font-bold text-center">Give Yourself Time</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="relative w-full" style="padding-top: 56.25%;">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full"
+                                    src="https://www.youtube.com/embed/jrJKnKSik6w" 
+                                    title="The Return" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <p class="mt-2 text-lg font-bold text-center">The Return</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="relative w-full" style="padding-top: 56.25%;">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full"
+                                    src="https://www.youtube.com/embed/29eVgJtfRsI" 
+                                    title="Don’t Be A Creative Director" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <p class="mt-2 text-lg font-bold text-center">Don’t Be A Creative Director</p>
+                        </div>
+                    </div>
+                </div>
+            `,
+            'prospect-form': `
+                <div class="flex flex-col items-center w-full max-w-lg p-4">
+                    <h2 class="text-4xl font-bold mb-8 text-center">PROSPECT FORM</h2>
+                    <p class="text-lg mb-8 text-center">
+                        Ready to start a project? Fill out the form below and we'll get back to you!
+                    </p>
+                    <form class="w-full">
+                        <div class="mb-6 text-left">
+                            <label for="name" class="block text-2xl font-bold mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full p-2 border border-black rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-black">
+                        </div>
+                        <div class="mb-6 text-left">
+                            <label for="email" class="block text-2xl font-bold mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full p-2 border border-black rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-black">
+                        </div>
+                        <div class="mb-6 text-left">
+                            <label for="message" class="block text-2xl font-bold mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full p-2 border border-black rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-black"></textarea>
+                        </div>
+                        <button type="submit" class="mx-auto block bg-black text-white px-8 py-4 text-2xl font-bold hover:bg-gray-800 transition-colors rounded-lg">
+                            SUBMIT
+                        </button>
+                    </form>
+                </div>
+            `,
+            'about': `
+                <div class="flex flex-col items-center text-center">
+                    <h2 class="text-4xl font-bold mb-8">ABOUT KWALITY & KLARITY</h2>
+                    <p class="text-lg mb-4 max-w-2xl">
+                        Kwality & Klarity is a South African online/digital publication platform founded by Tumisho Mathekgane. The platform focuses on documentation & promotion of young artist with music, fashion or related pop cultures.
+                    </p>
+                    
+                    <!-- FAQ Section -->
+                    <div class="mt-8 w-full max-w-2xl text-center">
+                        <h3 class="text-3xl font-bold mt-8 mb-4 text-center">Frequently Asked Questions</h3>
+                        <div class="space-y-4">
+                            <div class="p-4 border-4 border-black rounded-xl shadow-[4px_4px_0_0_#000]">
+                                <h4 class="font-bold text-xl text-center">What is Kwality & Klarity?</h4>
+                                <p class="mt-2 text-center">
+                                    We are a digital publication platform dedicated to showcasing emerging talent in South African music, fashion, and pop culture. We provide a space for artists to gain exposure and tell their stories.
+                                </p>
+                            </div>
+                            <div class="p-4 border-4 border-black rounded-xl shadow-[4px_4px_0_0_#000]">
+                                <h4 class="font-bold text-xl text-center">How can I submit my work for consideration?</h4>
+                                <p class="mt-2 text-center">
+                                    You can submit your work by filling out the Prospect Form on our website. We are always looking for new and exciting artists to feature!
+                                </p>
+                            </div>
+                            <div class="p-4 border-4 border-black rounded-xl shadow-[4px_4px_0_0_#000]">
+                                <h4 class="font-bold text-xl text-center">Where can I find your content?</h4>
+                                <p class="mt-2 text-center">
+                                    You can find our articles and photo features on our Blog page, and our short-form video content on our Kulture Kronicles page. We also post updates on our social media channels.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+        };
+
+        // All blog posts data
+        const blogPosts = [
+            {
+                title: 'Editor\'s Edit: Outlander Magazine for PUMA',
+                date: '2024-08-08',
+                content: 'A deep dive into the stunning fashion collaboration between Outlander Magazine and Puma. We analyze the creative direction and style of this unique feature.',
+                fullContent: `In an incredible collaboration that has set the fashion world abuzz, Outlander Magazine and Puma have joined forces to create a stunning feature that celebrates bold style and creative freedom. This article dives into the unique aesthetic and powerful narrative behind the collaboration, highlighting how it pushes the boundaries of contemporary fashion. The visuals, a mix of dynamic urban backdrops and striking studio shots, perfectly complement the collection's energetic and modern feel. It's a testament to the power of creative synergy and a clear sign that both brands are at the forefront of cultural innovation.`,
+                category: 'fashion',
+                imageUrl: 'https://placehold.co/600x400/000000/FFFFFF?text=Puma+x+Outlander+Magazine'
+            },
+            {
+                title: 'Pharrell\'s Louis Vuitton Puffer: A Statement Piece',
+                date: '2024-08-07',
+                content: 'Pharrell Williams makes a bold statement with his LV puffer jacket design. This article explores the design philosophy and cultural impact of this iconic piece.',
+                fullContent: `Pharrell Williams, a visionary in both music and fashion, has once again left his indelible mark with the latest Louis Vuitton puffer jacket. More than just an article of clothing, this piece is a cultural statement, blending street style with high fashion in a way only Pharrell can. The jacket's oversized silhouette and intricate detailing are a nod to urban aesthetics, while the premium materials and craftsmanship scream luxury. This design solidifies Pharrell's position as a trendsetter and creative director who understands the pulse of the youth culture.`,
+                category: 'fashion',
+                imageUrl: 'https://i.ibb.co/Df4NWLV4/Screenshot-2025-08-04-at-9-09-56-PM.png'
+            },
+            {
+                title: 'The Rise of South Africa\'s Sonic Pioneers',
+                date: '2024-08-06',
+                content: 'We shine a spotlight on the emerging artists who are shaping the sound of South Africa. Discover the stories behind the music and the future of the local scene.',
+                fullContent: `South Africa's music scene is more vibrant and diverse than ever, with a new generation of artists leading the charge. This feature introduces you to the sonic pioneers who are blending traditional sounds with modern genres to create a unique musical identity. From the soulful melodies of emerging vocalists to the hard-hitting beats of innovative producers, these artists are not just making music; they are crafting a new narrative for South African sound. Their passion, creativity, and commitment to their craft are setting the stage for an exciting future.`,
+                category: 'music',
+                imageUrl: 'https://i.ibb.co/MkLWPS4J/Screenshot-2025-08-04-at-9-09-47-PM.png'
+            },
+            {
+                title: 'Yamukeiwa\'s Styling Masterclass on Sportscene Campaign',
+                date: '2024-08-05',
+                content: 'Stylist Yamukeiwa once again proves his expertise with a stunning campaign for Sportscene. We break down the key looks and the creative process.',
+                fullContent: `Yamukeiwa, a name synonymous with cutting-edge fashion in South Africa, has delivered a masterclass in styling with his latest work for Sportscene. The campaign is a visual feast, showcasing how to elevate sportswear into high fashion with clever layering, bold accessories, and a keen eye for detail. This article breaks down the key looks, providing insight into Yamukeiwa's creative process and how he manages to capture the essence of modern street style while making it uniquely his own. His work serves as a powerful inspiration for aspiring stylists and fashion enthusiasts alike.`,
+                category: 'fashion',
+                imageUrl: 'https://i.ibb.co/7xVPQGBS/Screenshot-2025-08-04-at-9-52-18-PM.webp'
+            },
+            {
+                title: 'FC Barcelona x Kobe Bryant Brand: A Historic Collaboration',
+                date: '2024-08-04',
+                content: 'An unprecedented collaboration brings together the worlds of football and basketball. This article explores the story behind the FC Barcelona and Kobe Bryant brand partnership.',
+                fullContent: `An unprecedented collaboration brings together the worlds of football and basketball. This article explores the story behind the FC Barcelona and Kobe Bryant brand partnership.`,
+                category: 'fashion',
+                imageUrl: 'https://i.ibb.co/XxY8NKkJ/Screenshot-2025-08-04-at-9-52-41-PM.webp'
+            },
+            {
+                title: 'Is Olate\'s Take on Pharrell\'s Family a New Cultural Discourse?',
+                date: '2024-08-03',
+                content: 'A deep look into the viral conversation sparked by Olate\'s observation about Pharrell\'s family. We discuss the role of family in modern celebrity culture and creativity.',
+                fullContent: `When Olate's observation about Pharrell Williams' family went viral, it ignited a cultural discourse about the interplay between celebrity, family, and public perception. This article explores the nuances of this conversation, examining how artists' personal lives are increasingly becoming a part of their public persona and brand. We analyze the different perspectives on the matter, from celebrating family values to questioning the boundaries of privacy, and discuss how such discussions shape our understanding of creativity and success in the modern age.`,
+                category: 'discourse',
+                imageUrl: 'https://i.ibb.co/jPKM7RhV/Screenshot-2025-08-04-at-9-53-12-PM.webp'
+            },
+            {
+                title: 'Future of Live Events',
+                date: '2024-08-03',
+                content: 'With new technologies, live events are becoming more immersive. Holographic performances and virtual reality experiences are just around the corner.',
+                fullContent: `The future of live events is here, and it's more immersive than we could have imagined. This article explores how advancements in technology are transforming the concert and event experience. From holographic performances that bring iconic artists back to the stage to virtual reality experiences that allow fans to attend events from anywhere in the world, the possibilities are endless. We look at the pioneering companies and artists who are leading this revolution, creating unforgettable moments for audiences and redefining what it means to be a part of a live event.`,
+                category: 'events',
+                imageUrl: 'https://placehold.co/600x400/000000/FFFFFF?text=Placeholder+Image+4'
+            },
+        ];
+        
+        // Kwality & Klarity small logo URL for watermarking
+        const kAndkLogoUrl = 'https://i.ibb.co/Jj74RR2Z/IMG-9717.png';
+
+        // Function to filter and display blog posts
+        function filterPosts(category) {
+            const container = document.getElementById('blog-posts-container');
+            container.innerHTML = ''; // Clear previous posts
+            
+            const filteredPosts = category === 'all'
+                ? blogPosts
+                : blogPosts.filter(post => post.category === category);
+
+            filteredPosts.forEach((post, index) => {
+                const postElement = `
+                    <div class="flex flex-col items-center p-4 border-4 border-black rounded-xl shadow-[4px_4px_0_0_#000] cursor-pointer hover:bg-gray-100 transition-colors" onclick="showBlogPost(${index})">
+                        <h3 class="text-2xl font-bold text-center">${post.title}</h3>
+                        <p class="text-sm text-center">Posted on: ${post.date}</p>
+                        <p class="text-sm text-center">Category: ${post.category}</p>
+                        ${post.imageUrl ? `
+                            <!-- Updated aspect ratio for a taller image container -->
+                            <div class="relative w-full h-96 overflow-hidden mt-4 mb-4">
+                                <img src="${post.imageUrl}" alt="${post.title}" class="absolute top-0 left-0 w-full h-full object-cover" />
+                                <img src="${kAndkLogoUrl}" alt="Kwality & Klarity Logo" class="absolute bottom-2 right-2 w-8 h-8 opacity-75" />
+                            </div>
+                        ` : ''}
+                        <p class="mt-2 text-center">${post.content}</p>
+                    </div>
+                `;
+                container.innerHTML += postElement;
+            });
+
+            // Update active filter button styling
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('border-b-2', 'border-black', 'pb-1');
+                btn.classList.add('hover:underline');
+            });
+            const activeBtn = document.querySelector(`.filter-btn[data-filter="${category}"]`);
+            if (activeBtn) {
+                activeBtn.classList.remove('hover:underline');
+                activeBtn.classList.add('border-b-2', 'border-black', 'pb-1');
+            }
+        }
+        
+        // Function to display a full blog post
+        function showBlogPost(postIndex) {
+            const mainContentDiv = document.getElementById('main-content');
+            const post = blogPosts[postIndex];
+
+            // A function to generate the Instagram embed section
+            const generateInstagramEmbeds = () => {
+                return `
+                    <div class="mt-16 w-full text-center">
+                        <h3 class="text-3xl font-bold mb-8">LATEST FROM OUR INSTAGRAM</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-x-8 md:gap-y-12 w-full mx-auto">
+                            <!-- Instagram Embed 1 - Post about Puma x Outlander Magazine -->
+                            <div class="w-full relative aspect-[4/5] rounded-xl overflow-hidden shadow-[4px_4px_0_0_#000] border-4 border-black">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full"
+                                    src="https://www.instagram.com/p/DMSI1twouMP/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+                                    frameborder="0" 
+                                    scrolling="no" 
+                                    allowtransparency="true" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <!-- Instagram Embed 2 - Post about Pharrell's Louis Vuitton Puffer -->
+                            <div class="w-full relative aspect-[4/5] rounded-xl overflow-hidden shadow-[4px_4px_0_0_#000] border-4 border-black">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full"
+                                    src="https://www.instagram.com/p/C-m5-7-S2o8/embed/" 
+                                    frameborder="0" 
+                                    scrolling="no" 
+                                    allowtransparency="true" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <!-- Instagram Embed 3 - A general fashion/editorial post -->
+                            <div class="w-full relative aspect-[4/5] rounded-xl overflow-hidden shadow-[4px_4px_0_0_#000] border-4 border-black">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full"
+                                    src="https://www.instagram.com/p/C-b1rA1y60s/embed/" 
+                                    frameborder="0" 
+                                    scrolling="no" 
+                                    allowtransparency="true" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <!-- Instagram Embed 4 - Another post -->
+                            <div class="w-full relative aspect-[4/5] rounded-xl overflow-hidden shadow-[4px_4px_0_0_#000] border-4 border-black">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full"
+                                    src="https://www.instagram.com/p/C-wO_m0S4P5/embed/" 
+                                    frameborder="0" 
+                                    scrolling="no" 
+                                    allowtransparency="true" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                        <!-- Link to the full Instagram profile -->
+                        <a href="https://www.instagram.com/kwalityandklarity/" target="_blank" class="mt-8 px-6 py-3 border-4 border-black rounded-xl shadow-[4px_4px_0_0_#000] text-2xl font-bold inline-block hover:bg-gray-200 transition-colors">
+                            View our full Instagram
+                        </a>
+                    </div>
+                `;
+            };
+
+            const postDetailHtml = `
+                <div class="flex flex-col items-center w-full max-w-4xl text-left px-4">
+                    <button onclick="showPage('blog')" class="mb-8 px-4 py-2 border-4 border-black rounded-xl shadow-[4px_4px_0_0_#000] text-2xl hover:bg-gray-200 transition-colors">
+                        ← Back to Blog
+                    </button>
+                    <h2 class="text-5xl font-bold mb-4 text-center">${post.title}</h2>
+                    <p class="text-lg mb-4 text-center">Posted on: ${post.date} | Category: ${post.category}</p>
+                    ${post.imageUrl ? `
+                        <!-- Updated aspect ratio for a taller image container on the full page -->
+                        <div class="relative w-full max-h-[600px] aspect-video mb-8 border-4 border-black shadow-[4px_4px_0_0_#000]">
+                            <img src="${post.imageUrl}" alt="${post.title}" class="absolute top-0 left-0 w-full h-full object-cover" />
+                            <img src="${kAndkLogoUrl}" alt="Kwality & Klarity Logo" class="absolute bottom-2 right-2 w-12 h-12 opacity-75" />
+                        </div>
+                    ` : ''}
+                    <p class="text-xl leading-relaxed whitespace-pre-wrap">${post.fullContent}</p>
+
+                    <!-- Dynamically inject the Instagram embeds -->
+                    ${generateInstagramEmbeds()}
+                </div>
+            `;
+            mainContentDiv.innerHTML = postDetailHtml;
+        }
+
+        // Function to display the selected page content
+        function showPage(pageId) {
+            const mainContentDiv = document.getElementById('main-content');
+            const mainNav = document.getElementById('main-nav');
+
+            mainContentDiv.innerHTML = pages[pageId];
+
+            // Adjust layout based on the page
+            if (pageId === 'home') {
+                mainNav.classList.remove('mt-16');
+                mainContentDiv.classList.add('hidden'); // Hide content div on home
+                document.body.style.justifyContent = 'space-between';
+            } else {
+                mainNav.classList.add('mt-16');
+                mainContentDiv.classList.remove('hidden'); // Show content on other pages
+                document.body.style.justifyContent = 'flex-start';
+
+                // If it's the blog page, set up the filter functionality
+                if (pageId === 'blog') {
+                    filterPosts('all'); // Show all posts by default
+                    document.getElementById('filter-container').addEventListener('click', (e) => {
+                        if (e.target.tagName === 'BUTTON') {
+                            filterPosts(e.target.dataset.filter);
+                        }
+                    });
+                }
+            }
+        }
+
+        // Initially load the home page when the script runs
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
