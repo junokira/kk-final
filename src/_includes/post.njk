@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }} | Kwality & Klarity</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body class="bg-white text-black font-sans">
+  <main class="max-w-3xl mx-auto p-6">
+    <h1 class="text-5xl font-bold mb-4 text-center">{{ title }}</h1>
+    <p class="text-sm text-gray-500 text-center mb-8">
+      Posted on {{ date | date("PPP") }}
+    </p>
+
+    {% if cover %}
+    <div class="mb-8">
+      <img src="{{ cover }}" alt="{{ title }}" class="w-full rounded-lg shadow-lg" />
+    </div>
+    {% endif %}
+
+    <article class="prose max-w-none">
+      {{ content | safe }}
+    </article>
+  </main>
+</body>
+</html>
