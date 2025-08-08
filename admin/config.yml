@@ -2,6 +2,7 @@ backend:
   name: github
   repo: junokira/kk  # ← 🔁 change this to your actual repo
   branch: main                         # or 'master', depending on your default branch
+  auth_endpoint: /admin/callback.html   
 
 media_folder: "static/uploads"         # where uploaded images are stored (inside the repo)
 public_folder: "/static/uploads"       # how they're referenced in HTML
