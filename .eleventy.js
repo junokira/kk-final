@@ -1,21 +1,23 @@
-module.exports = function (eleventyConfig) {
-  // Copy static files to output (_site/)
-  eleventyConfig.addPassthroughCopy({ "static": "static" });
+const { DateTime } = require("luxon");
 
-  // Make the /admin CMS interface available
+module.exports = function (eleventyConfig) {
+  // Passthroughs
+  eleventyConfig.addPassthroughCopy({ "static": "static" });
   eleventyConfig.addPassthroughCopy("admin");
 
-  // Blog collection: sort posts by newest first
-  eleventyConfig.addCollection("posts", function (collectionApi) {
-    return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => b.date - a.date);
+  // Date filter usable as: {{ date | formatDate("PPP") }}
+  eleventyConfig.addFilter("formatDate", (value, format = "PPP") => {
+    const jsDate = value instanceof Date ? value : new Date(value);
+    return DateTime.fromJSDate(jsDate).toFormat(format);
   });
 
+  // Blog collection
+  eleventyConfig.addCollection("posts", (collection) =>
+    collection.getFilteredByGlob("src/posts/*.md").sort((a, b) => b.date - a.date)
+  );
+
   return {
-    dir: {
-      input: "src",            // where your source files live
-      includes: "_includes",   // where templates live
-      output: "_site"          // where the final site is generated
-    },
+    dir: { input: "src", includes: "_includes", output: "_site" },
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
   };
