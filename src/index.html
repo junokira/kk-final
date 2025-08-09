@@ -91,6 +91,12 @@
                 padding-bottom: env(safe-area-inset-bottom, 20px);
                 overflow: hidden;
             }
+            /* Specifically for home page on mobile, the navigation is vertical */
+            #main-nav.home-nav-mobile {
+                flex-direction: column;
+                space-y: 8;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -587,28 +593,34 @@
             const mainContentDiv = document.getElementById('main-content');
             const mainNav = document.getElementById('main-nav');
             
-            // First, remove the no-scroll class and reset the body to a neutral state
+            // First, remove all home page specific classes
             body.classList.remove('no-scroll', 'home-page-layout');
+            mainNav.classList.remove('home-nav-mobile');
+            mainNav.classList.remove('flex', 'flex-col', 'space-y-8', 'items-center', 'pt-16');
+            mainNav.classList.remove('mt-16', 'flex-row', 'space-x-4', 'justify-center', 'flex-wrap');
+
 
             mainContentDiv.innerHTML = pages[pageId];
 
             // Adjust layout based on the page
             if (pageId === 'home') {
-                mainNav.classList.remove('mt-16', 'flex-row', 'space-x-4', 'justify-center', 'flex-wrap');
                 mainContentDiv.classList.add('hidden'); // Hide content div on home
                 
                 // Use the new class to apply a responsive layout for home page on mobile
                 body.classList.add('home-page-layout');
 
-                // Set nav to vertical for all screen sizes on the home page
-                mainNav.classList.add('flex', 'flex-col', 'space-y-8', 'items-center', 'pt-16');
+                // Apply mobile-specific nav styling for home page
+                mainNav.classList.add('home-nav-mobile');
+                
+                // Set the default desktop layout for the home page nav
+                mainNav.classList.add('flex', 'md:flex-row', 'md:justify-center', 'md:space-x-16');
+
 
             } else {
                 mainNav.classList.add('mt-16');
                 mainContentDiv.classList.remove('hidden'); // Show content on other pages
                 
                 // Set nav to horizontal for all screen sizes on other pages
-                mainNav.classList.remove('flex-col', 'space-y-8', 'items-center', 'pt-16');
                 mainNav.classList.add('flex', 'flex-row', 'space-x-4', 'justify-center', 'flex-wrap');
 
                 // If it's the blog page, set up the filter functionality
