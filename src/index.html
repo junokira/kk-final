@@ -33,10 +33,11 @@
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
         body {
             font-family: 'VT323', monospace;
+            /* Added to ensure a full-screen layout that can be controlled */
             min-height: 100vh;
         }
 
-        /* Utility class to disable scrolling on the body for the home page */
+        /* Utility class to disable scrolling on the body */
         .no-scroll {
             overflow: hidden;
         }
@@ -56,36 +57,37 @@
             width: 100%;
             z-index: 1;
         }
-        
+
+        .footer-email {
+            margin-bottom: 0.6rem;
+        }
+
+        .social-icons {
+            margin: 0 12px;
+            text-decoration: none;
+            color: inherit;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.5s;
+        }
+
         .social-icons svg,
         .social-icons img {
             width: 28px;
             height: 28px;
-            fill: black; /* Changed SVG fill to black for the new color scheme */
+            fill: currentColor;
             transition: fill 0.5s;
-        }
-
-        /* Added styles for the fixed footer on mobile */
-        @media (max-width: 768px) {
-            body.home-page {
-                height: 100vh;
-                overflow: hidden;
-                padding-bottom: calc(90px + env(safe-area-inset-bottom, 20px));
-            }
-            body.home-page footer {
-                background-color: white; /* Changed footer background to white */
-                color: black; /* Changed footer text to black */
-                position: absolute;
-                bottom: 0;
-            }
         }
     </style>
 </head>
-<body class="bg-white text-black min-h-screen flex flex-col justify-between">
+<body class="bg-white text-black min-h-screen flex flex-col justify-between no-scroll">
 
     <!-- Header Section -->
     <div class="flex justify-center p-4">
+        <!-- Logo is now bigger and is a clickable link to the home page -->
         <a class="cursor-pointer" onclick="showPage('home')">
+            <!-- Increased logo size on medium and larger screens -->
             <img alt="Black globe icon with star on top right" class="w-32 h-32 md:w-48 md:h-48" height="128" src="https://i.ibb.co/mKbxmzd/K-K-black.webp" width="128"/>
         </a>
     </div>
@@ -112,13 +114,13 @@
     </div>
 
     <!-- Footer with social media icons from user's provided code -->
-    <footer class="mt-16 text-black pb-20 bg-white">
+    <footer class="mt-16 text-black">
         <div class="footer-email">
             <a href="mailto:info@kwalityandklarity.com" style="color: inherit; text-decoration: none;">
                 info@kwalityandklarity.com
             </a>
         </div>
-        <div class="social-icons flex justify-center space-x-6">
+        <div class="social-icons">
             <a href="https://www.instagram.com/kwalityandklarity/" target="_blank" title="Instagram">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.25 5.25 0 0 1 21.5 7.25v8.5A5.25 5.25 0 0 1 16.25 21h-8.5A5.25 5.25 0 0 1 2.5 15.75v-8.5A5.25 5.25 0 0 1 7.75 2zm0 1.5A3.75 3.75 0 0 0 4 7.25v8.5A3.75 3.75 0 0 0 7.75 19.5h8.5A3.75 3.75 0 0 0 20 15.75v-8.5A3.75 3.75 0 0 0 16.25 3.5h-8.5zm9.25 2.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"/></svg>
             </a>
@@ -460,7 +462,7 @@
         ];
         
         // Kwality & Klarity small logo URL for watermarking
-        const kAndkLogoUrl = 'https://i.ibb.co/mKbxmzd/K-K-black.webp';
+        const kAndkLogoUrl = 'https://i.ibb.co/Jj74RR2Z/IMG-9717.png';
 
         // Function to filter and display blog posts
         function filterPosts(category) {
@@ -568,34 +570,44 @@
 
         // Function to display the selected page content
         function showPage(pageId) {
-            const body = document.body;
             const mainContentDiv = document.getElementById('main-content');
             const mainNav = document.getElementById('main-nav');
+            
+            // First, remove the no-scroll class to prepare for content that might need scrolling
+            document.body.classList.remove('no-scroll');
 
-            // Reset body classes for all pages
-            body.classList.remove('home-page', 'no-scroll');
-            mainContentDiv.classList.remove('hidden'); // Ensure content is visible by default
-            mainNav.classList.remove('flex-col', 'space-y-8', 'items-start', 'pl-10');
-            mainNav.classList.add('md:flex-row', 'md:space-x-16', 'md:justify-center');
-            
-            // Adjust layout for the home page specifically
-            if (pageId === 'home') {
-                body.classList.add('home-page', 'no-scroll');
-                mainContentDiv.classList.add('hidden'); // Hide content div on home
-                mainNav.classList.remove('md:flex-row', 'md:space-x-16', 'md:justify-center');
-                mainNav.classList.add('flex-col', 'space-y-8', 'items-start', 'pl-10'); // Restore mobile nav styles for home
-            }
-            
             mainContentDiv.innerHTML = pages[pageId];
 
-            // If it's the blog page, set up the filter functionality
-            if (pageId === 'blog') {
-                filterPosts('all'); // Show all posts by default
-                document.getElementById('filter-container').addEventListener('click', (e) => {
-                    if (e.target.tagName === 'BUTTON') {
-                        filterPosts(e.target.dataset.filter);
-                    }
-                });
+            // Adjust layout based on the page
+            if (pageId === 'home') {
+                mainNav.classList.remove('mt-16');
+                mainContentDiv.classList.add('hidden'); // Hide content div on home
+                document.body.style.justifyContent = 'space-between';
+                document.body.classList.add('no-scroll'); // Add back no-scroll for the home page
+
+                // Set nav to vertical for mobile and center all items
+                mainNav.classList.add('flex-col', 'space-y-8', 'items-center');
+                mainNav.classList.remove('flex-row', 'space-x-16', 'justify-center');
+
+            } else {
+                mainNav.classList.add('mt-16');
+                mainContentDiv.classList.remove('hidden'); // Show content on other pages
+                document.body.style.justifyContent = 'flex-start';
+
+                // Set nav to horizontal for mobile on other pages
+                // The md classes will handle desktop, so this only affects mobile
+                mainNav.classList.remove('flex-col', 'space-y-8', 'items-center');
+                mainNav.classList.add('flex-row', 'space-x-4', 'justify-center', 'flex-wrap');
+
+                // If it's the blog page, set up the filter functionality
+                if (pageId === 'blog') {
+                    filterPosts('all'); // Show all posts by default
+                    document.getElementById('filter-container').addEventListener('click', (e) => {
+                        if (e.target.tagName === 'BUTTON') {
+                            filterPosts(e.target.dataset.filter);
+                        }
+                    });
+                }
             }
         }
 
