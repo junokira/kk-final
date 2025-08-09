@@ -81,7 +81,8 @@
         }
     </style>
 </head>
-<body class="bg-white text-black min-h-screen flex flex-col justify-between no-scroll">
+<!-- Removed the no-scroll class from the body -->
+<body class="bg-white text-black min-h-screen flex flex-col justify-between">
 
     <!-- Header Section -->
     <div class="flex justify-center p-4">
@@ -114,7 +115,8 @@
     </div>
 
     <!-- Footer with social media icons from user's provided code -->
-    <footer class="mt-16 text-black">
+    <!-- Added pb-20 to ensure the footer is above the iOS navigation bar -->
+    <footer class="mt-16 text-black pb-20">
         <div class="footer-email">
             <a href="mailto:info@kwalityandklarity.com" style="color: inherit; text-decoration: none;">
                 info@kwalityandklarity.com
@@ -573,31 +575,31 @@
             const mainContentDiv = document.getElementById('main-content');
             const mainNav = document.getElementById('main-nav');
             
-            // First, remove the no-scroll class to prepare for content that might need scrolling
-            document.body.classList.remove('no-scroll');
-
+            // On every page change, clear the main content and remove the `justify-between` and flex-center classes from the body
             mainContentDiv.innerHTML = pages[pageId];
+            document.body.classList.remove('flex-center');
+            document.body.style.justifyContent = 'flex-start';
 
             // Adjust layout based on the page
             if (pageId === 'home') {
                 mainNav.classList.remove('mt-16');
                 mainContentDiv.classList.add('hidden'); // Hide content div on home
+                
+                // On the home page, justify the content to be between the logo and the footer and add a slight padding to the left of the nav items
                 document.body.style.justifyContent = 'space-between';
-                document.body.classList.add('no-scroll'); // Add back no-scroll for the home page
-
-                // Set nav to vertical for mobile and center all items
-                mainNav.classList.add('flex-col', 'space-y-8', 'items-center');
-                mainNav.classList.remove('flex-row', 'space-x-16', 'justify-center');
-
+                mainNav.classList.remove('flex-row', 'space-x-16', 'justify-center'); // Removed horizontal styles for mobile
+                
+                // Updated mobile nav styles for home page
+                mainNav.classList.add('flex-col', 'space-y-8', 'items-start', 'pl-10'); // Added pl-10 to push the text to the right
+                
             } else {
                 mainNav.classList.add('mt-16');
                 mainContentDiv.classList.remove('hidden'); // Show content on other pages
                 document.body.style.justifyContent = 'flex-start';
-
-                // Set nav to horizontal for mobile on other pages
-                // The md classes will handle desktop, so this only affects mobile
-                mainNav.classList.remove('flex-col', 'space-y-8', 'items-center');
-                mainNav.classList.add('flex-row', 'space-x-4', 'justify-center', 'flex-wrap');
+                
+                // Removed the mobile specific classes for home page and added the responsive ones
+                mainNav.classList.remove('flex-col', 'space-y-8', 'items-start', 'pl-10');
+                mainNav.classList.add('md:flex-row', 'md:space-x-16', 'md:justify-center');
 
                 // If it's the blog page, set up the filter functionality
                 if (pageId === 'blog') {
