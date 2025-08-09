@@ -79,6 +79,19 @@
             fill: currentColor;
             transition: fill 0.5s;
         }
+        
+        /* New styling to fix the footer on mobile for the home page */
+        @media (max-width: 768px) {
+            .home-page-layout {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                /* This is the key change: we use padding to move the footer up */
+                padding-bottom: env(safe-area-inset-bottom, 20px);
+                overflow: hidden;
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-black min-h-screen flex flex-col justify-between no-scroll">
@@ -570,34 +583,33 @@
 
         // Function to display the selected page content
         function showPage(pageId) {
+            const body = document.body;
             const mainContentDiv = document.getElementById('main-content');
             const mainNav = document.getElementById('main-nav');
             
-            // First, remove the no-scroll class to prepare for content that might need scrolling
-            document.body.classList.remove('no-scroll');
+            // First, remove the no-scroll class and reset the body to a neutral state
+            body.classList.remove('no-scroll', 'home-page-layout');
 
             mainContentDiv.innerHTML = pages[pageId];
 
             // Adjust layout based on the page
             if (pageId === 'home') {
-                mainNav.classList.remove('mt-16');
+                mainNav.classList.remove('mt-16', 'flex-row', 'space-x-4', 'justify-center', 'flex-wrap');
                 mainContentDiv.classList.add('hidden'); // Hide content div on home
-                document.body.style.justifyContent = 'space-between';
-                document.body.classList.add('no-scroll'); // Add back no-scroll for the home page
+                
+                // Use the new class to apply a responsive layout for home page on mobile
+                body.classList.add('home-page-layout');
 
-                // Set nav to vertical for mobile and center all items
-                mainNav.classList.add('flex-col', 'space-y-8', 'items-center');
-                mainNav.classList.remove('flex-row', 'space-x-16', 'justify-center');
+                // Set nav to vertical for all screen sizes on the home page
+                mainNav.classList.add('flex', 'flex-col', 'space-y-8', 'items-center', 'pt-16');
 
             } else {
                 mainNav.classList.add('mt-16');
                 mainContentDiv.classList.remove('hidden'); // Show content on other pages
-                document.body.style.justifyContent = 'flex-start';
-
-                // Set nav to horizontal for mobile on other pages
-                // The md classes will handle desktop, so this only affects mobile
-                mainNav.classList.remove('flex-col', 'space-y-8', 'items-center');
-                mainNav.classList.add('flex-row', 'space-x-4', 'justify-center', 'flex-wrap');
+                
+                // Set nav to horizontal for all screen sizes on other pages
+                mainNav.classList.remove('flex-col', 'space-y-8', 'items-center', 'pt-16');
+                mainNav.classList.add('flex', 'flex-row', 'space-x-4', 'justify-center', 'flex-wrap');
 
                 // If it's the blog page, set up the filter functionality
                 if (pageId === 'blog') {
