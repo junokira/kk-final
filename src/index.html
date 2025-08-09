@@ -91,7 +91,6 @@
         /* Updated styling for the homepage on mobile */
         @media (max-width: 768px) {
             body.homepage .home-page-mobile-footer {
-                /* Removed fixed positioning to allow flexbox to work correctly */
                 position: relative;
             }
             body.homepage {
@@ -99,14 +98,14 @@
                 flex-direction: column;
                 justify-content: space-between;
                 min-height: 100vh;
-                padding-bottom: 30px; /* Add padding to account for the footer height */
+                padding-bottom: 90px; /* Increased padding to give the footer more space */
             }
             body.homepage #main-nav {
-                flex-grow: 1; /* Make the navigation take up the majority of the space */
+                flex-grow: 1;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center; /* Center the links vertically within the nav container */
+                justify-content: center;
             }
         }
     </style>
@@ -524,16 +523,16 @@
                 navMenu.classList.remove('hidden');
                 body.classList.add('homepage');
                 body.classList.remove('flex-center');
+                body.classList.add('no-scroll'); // Add no-scroll class for home page
                 // Set the URL hash to a blank state for the home page
                 window.location.hash = '';
-                // Since there is no home page content, the nav will be centered on its own
-                // and the body classes handle the layout
             } else {
                 // Show the main content area and hide the main nav
                 contentDiv.classList.remove('hidden');
                 navMenu.classList.add('hidden');
                 body.classList.remove('homepage');
                 body.classList.add('flex-center');
+                body.classList.remove('no-scroll'); // Remove no-scroll class for other pages
                 // Set the URL hash for the current page
                 window.location.hash = pageId;
 
@@ -575,12 +574,13 @@
                 );
                 postElement.setAttribute('data-category', post.category);
                 postElement.innerHTML = `
-                    <div class="mb-4 overflow-hidden rounded-lg">
-                        <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-auto object-cover">
-                    </div>
                     <h3 class="text-3xl font-bold mb-2">${post.title}</h3>
+                    <p class="text-sm text-gray-600 mb-4">${post.date} | ${post.category}</p>
+                    <div class="mb-4 overflow-hidden relative">
+                        <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-auto object-cover">
+                        <img src="https://i.ibb.co/Jj74RR2Z/IMG-9717.png" alt="Kwality & Klarity Logo" class="absolute bottom-2 right-2 w-12 h-12">
+                    </div>
                     <p class="text-lg mb-2">${post.content}</p>
-                    <p class="text-sm text-gray-600">${post.date}</p>
                 `;
                 postElement.addEventListener('click', () => showFullPost(post));
                 container.appendChild(postElement);
@@ -618,8 +618,9 @@
                 <div class="flex flex-col items-center max-w-4xl p-4 md:p-8">
                     <h2 class="text-4xl font-bold text-center mb-4">${post.title}</h2>
                     <p class="text-md text-gray-600 mb-8">${post.date} | ${post.category}</p>
-                    <div class="mb-8 w-full overflow-hidden rounded-lg border-4 border-black shadow-[4px_4px_0_0_#000]">
+                    <div class="mb-8 w-full overflow-hidden border-4 border-black shadow-[4px_4px_0_0_#000] relative">
                         <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-auto object-cover">
+                        <img src="https://i.ibb.co/Jj74RR2Z/IMG-9717.png" alt="Kwality & Klarity Logo" class="absolute bottom-2 right-2 w-12 h-12">
                     </div>
                     <p class="text-xl mb-8 leading-relaxed text-center">${post.fullContent}</p>
                     <button onclick="showPage('blog')" class="bg-black text-white px-8 py-4 text-2xl font-bold hover:bg-gray-800 transition-colors rounded-lg">
