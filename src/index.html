@@ -33,7 +33,15 @@
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
         body {
             font-family: 'VT323', monospace;
+            /* Added to ensure a full-screen layout that can be controlled */
+            min-height: 100vh;
         }
+
+        /* Utility class to disable scrolling on the body */
+        .no-scroll {
+            overflow: hidden;
+        }
+
         /* Class to center the main content area vertically */
         .flex-center {
             display: flex;
@@ -77,7 +85,7 @@
         }
     </style>
 </head>
-<body class="bg-white text-black min-h-screen flex flex-col justify-between">
+<body class="bg-white text-black min-h-screen flex flex-col justify-between no-scroll">
 
     <!-- Header Section -->
     <div class="flex justify-center p-4">
@@ -105,7 +113,7 @@
     </nav>
     
     <!-- Main content area where pages will be displayed -->
-    <div id="main-content" class="flex-grow p-8 sm:p-16 flex justify-center">
+    <div id="main-content" class="flex-grow p-8 sm:p-16 flex justify-center hidden">
         <!-- Content will be injected here by JavaScript -->
     </div>
 
@@ -352,7 +360,8 @@
                 <div class="flex flex-col items-center text-center">
                     <h2 class="text-4xl font-bold mb-8">ABOUT KWALITY & KLARITY</h2>
                     <p class="text-lg mb-4 max-w-2xl">
-                        Kwality & Klarity is about more than just sound; it's about substance. We dive into topics that matter — mental health, creativity, identity, and growth — while also celebrating the music and stories that reflect who we are. It’s raw, it’s real, and it’s ours. At its core, this platform is here to remind young people that their voices carry weight, their experiences have value, and their clarity — no matter how messy the process of finding it — is something worth striving for.
+                        Kwality & Klarity is about more than just sound; it's about substance. We dive into topics that matter — mental health, creativity, identity, and growth — while also celebrating the music and stories that reflect who we are. It’s raw, it’s real, and it’s ours.
+                        At its core, this platform is here to remind young people that their voices carry weight, their experiences have value, and their clarity — no matter how messy the process of finding it — is something worth striving for.
                     </p>
                     
                     <!-- Newsletter Subscription Form -->
@@ -434,7 +443,7 @@
                 title: 'Yamukeiwa\'s Styling Masterclass on Sportscene Campaign',
                 date: '2024-08-05',
                 content: 'Stylist Yamukeiwa once again proves his expertise with a stunning campaign for Sportscene. We break down the key looks and the creative process.',
-                fullContent: `Yamukeiwa, a name synonymous with cutting-edge fashion in South Africa, has delivered a masterclass in styling with his latest work for Sportscene. The campaign is a visual feast, showcasing how to elevate sportswear into high fashion with clever layering, bold accessories, and a keen eye for detail. This article breaks down the key looks, providing insight into Yamukeiwa's creative process and how he manages to capture the essence of modern street style while making it uniquely his own. His work serves as a powerful inspiration for aspiring stylists and fashion enthusiasts alike.`,
+                fullContent: `Stylist Yamukeiwa, a name synonymous with cutting-edge fashion in South Africa, has delivered a masterclass in styling with his latest work for Sportscene. The campaign is a visual feast, showcasing how to elevate sportswear into high fashion with clever layering, bold accessories, and a keen eye for detail. This article breaks down the key looks, providing insight into Yamukeiwa's creative process and how he manages to capture the essence of modern street style while making it uniquely his own. His work serves as a powerful inspiration for aspiring stylists and fashion enthusiasts alike.`,
                 category: 'fashion',
                 imageUrl: 'https://i.ibb.co/7xVPQGBS/Screenshot-2025-08-04-at-9-52-18-PM.webp'
             },
@@ -509,45 +518,12 @@
                 return `
                     <div class="mt-16 w-full text-center">
                         <h3 class="text-3xl font-bold mb-8">LATEST FROM OUR INSTAGRAM</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-x-8 md:gap-y-12 w-full mx-auto">
+                        <div class="grid grid-cols-1 gap-4 md:gap-x-8 md:gap-y-12 w-full mx-auto max-w-sm">
                             <!-- Instagram Embed 1 - Post about Puma x Outlander Magazine -->
                             <div class="w-full relative aspect-[4/5] rounded-xl overflow-hidden shadow-[4px_4px_0_0_#000] border-4 border-black">
                                 <iframe 
                                     class="absolute top-0 left-0 w-full h-full"
                                     src="https://www.instagram.com/p/C-iH79_yYhH/embed/" 
-                                    frameborder="0" 
-                                    scrolling="no" 
-                                    allowtransparency="true" 
-                                    allowfullscreen>
-                                </iframe>
-                            </div>
-                            <!-- Instagram Embed 2 - Post about Pharrell's Louis Vuitton Puffer -->
-                            <div class="w-full relative aspect-[4/5] rounded-xl overflow-hidden shadow-[4px_4px_0_0_#000] border-4 border-black">
-                                <iframe 
-                                    class="absolute top-0 left-0 w-full h-full"
-                                    src="https://www.instagram.com/p/C-m5-7-S2o8/embed/" 
-                                    frameborder="0" 
-                                    scrolling="no" 
-                                    allowtransparency="true" 
-                                    allowfullscreen>
-                                </iframe>
-                            </div>
-                            <!-- Instagram Embed 3 - A general fashion/editorial post -->
-                            <div class="w-full relative aspect-[4/5] rounded-xl overflow-hidden shadow-[4px_4px_0_0_#000] border-4 border-black">
-                                <iframe 
-                                    class="absolute top-0 left-0 w-full h-full"
-                                    src="https://www.instagram.com/p/C-b1rA1y60s/embed/" 
-                                    frameborder="0" 
-                                    scrolling="no" 
-                                    allowtransparency="true" 
-                                    allowfullscreen>
-                                </iframe>
-                            </div>
-                            <!-- Instagram Embed 4 - Another post -->
-                            <div class="w-full relative aspect-[4/5] rounded-xl overflow-hidden shadow-[4px_4px_0_0_#000] border-4 border-black">
-                                <iframe 
-                                    class="absolute top-0 left-0 w-full h-full"
-                                    src="https://www.instagram.com/p/C-wO_m0S4P5/embed/" 
                                     frameborder="0" 
                                     scrolling="no" 
                                     allowtransparency="true" 
@@ -600,6 +576,9 @@
         function showPage(pageId) {
             const mainContentDiv = document.getElementById('main-content');
             const mainNav = document.getElementById('main-nav');
+            
+            // First, remove the no-scroll class to prepare for content that might need scrolling
+            document.body.classList.remove('no-scroll');
 
             mainContentDiv.innerHTML = pages[pageId];
 
@@ -608,6 +587,7 @@
                 mainNav.classList.remove('mt-16');
                 mainContentDiv.classList.add('hidden'); // Hide content div on home
                 document.body.style.justifyContent = 'space-between';
+                document.body.classList.add('no-scroll'); // Add back no-scroll for the home page
             } else {
                 mainNav.classList.add('mt-16');
                 mainContentDiv.classList.remove('hidden'); // Show content on other pages
