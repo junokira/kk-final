@@ -33,7 +33,6 @@
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
         body {
             font-family: 'VT323', monospace;
-            /* Added to ensure a full-screen layout that can be controlled */
             min-height: 100vh;
         }
 
@@ -49,6 +48,15 @@
             align-items: center;
             justify-content: center;
         }
+        
+        /* New class for the homepage layout */
+        .homepage-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
 
         /* Footer styling from user's provided code */
         footer {
@@ -56,8 +64,6 @@
             text-align: center;
             width: 100%;
             z-index: 1;
-            /* New: Added the CSS variable for manual adjustment */
-            margin-bottom: var(--footer-offset, 0);
         }
 
         .footer-email {
@@ -82,27 +88,30 @@
             transition: fill 0.5s;
         }
         
-        /* New styling to fix the footer on mobile for the home page */
+        /* Updated styling for the homepage on mobile */
         @media (max-width: 768px) {
-            .home-page-layout {
-                min-height: 100vh;
+            body.homepage .home-page-mobile-footer {
+                /* Removed fixed positioning to allow flexbox to work correctly */
+                position: relative;
+            }
+            body.homepage {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                /* This is the key change: we use padding to move the footer up */
-                padding-bottom: env(safe-area-inset-bottom, 20px);
-                overflow: hidden;
+                min-height: 100vh;
+                padding-bottom: 30px; /* Add padding to account for the footer height */
             }
-            /* Specifically for home page on mobile, the navigation is vertical */
-            #main-nav.home-nav-mobile {
+            body.homepage #main-nav {
+                flex-grow: 1; /* Make the navigation take up the majority of the space */
+                display: flex;
                 flex-direction: column;
-                space-y: 8;
                 align-items: center;
+                justify-content: center; /* Center the links vertically within the nav container */
             }
         }
     </style>
 </head>
-<body class="bg-white text-black min-h-screen flex flex-col justify-between no-scroll">
+<body class="bg-white text-black min-h-screen homepage-layout no-scroll homepage">
 
     <!-- Header Section -->
     <div class="flex justify-center p-4">
@@ -135,7 +144,7 @@
     </div>
 
     <!-- Footer with social media icons from user's provided code -->
-    <footer class="mt-16 text-black">
+    <footer class="mt-16 text-black home-page-mobile-footer">
         <div class="footer-email">
             <a href="mailto:info@kwalityandklarity.com" style="color: inherit; text-decoration: none;">
                 info@kwalityandklarity.com
@@ -473,174 +482,153 @@
                 imageUrl: 'https://i.ibb.co/XxY8NKkJ/Screenshot-2025-08-04-at-9-52-41-PM.webp'
             },
             {
-                title: 'Is Olate\'s Take on Pharrell\'s Family a New Cultural Discourse?',
+                title: 'Music Festivals: A Discourse on South Africa’s Creative Spaces',
                 date: '2024-08-03',
-                content: 'A deep look into the viral conversation sparked by Olate\'s observation about Pharrell\'s family. We discuss the role of family in modern celebrity culture and creativity.',
-                fullContent: `When Olate's observation about Pharrell Williams' family went viral, it ignited a cultural discourse about the interplay between celebrity, family, and public perception. This article explores the nuances of this conversation, examining how artists' personal lives are increasingly becoming a part of their public persona and brand. We analyze the different perspectives on the matter, from celebrating family values to questioning the boundaries of privacy, and discuss how such discussions shape our understanding of creativity and success in the modern age.`,
+                content: 'A thoughtful discussion on the role of music festivals in fostering creative expression and community. We explore how these events are vital to the pop culture scene.',
+                fullContent: `Music festivals have always been more than just a series of performances; they are dynamic, creative spaces where communities are forged and ideas are exchanged. This discourse explores the unique ecosystem of South African festivals, from the mainstream giants to the intimate, grassroots gatherings. We discuss how these events provide a platform for emerging artists, create a sense of belonging, and act as a bellwether for pop culture trends. It's a conversation about sound, style, and the spaces where they collide to create something truly special.`,
                 category: 'discourse',
-                imageUrl: 'https://i.ibb.co/jPKM7RhV/Screenshot-2025-08-04-at-9-53-12-PM.webp'
+                imageUrl: 'https://i.ibb.co/1qCjN2wP/Screenshot-2025-08-04-at-9-09-50-PM.webp'
             },
-        ];
-        
-        // Kwality & Klarity small logo URL for watermarking
-        const kAndkLogoUrl = 'https://i.ibb.co/Jj74RR2Z/IMG-9717.png';
-
-        // Function to filter and display blog posts
-        function filterPosts(category) {
-            const container = document.getElementById('blog-posts-container');
-            container.innerHTML = ''; // Clear previous posts
-            
-            const filteredPosts = category === 'all'
-                ? blogPosts
-                : blogPosts.filter(post => post.category === category);
-
-            filteredPosts.forEach((post, index) => {
-                const postElement = `
-                    <div class="flex flex-col items-center p-4 border-4 border-black rounded-xl shadow-[4px_4px_0_0_#000] cursor-pointer hover:bg-gray-100 transition-colors" onclick="showBlogPost(${index})">
-                        <h3 class="text-2xl font-bold text-center">${post.title}</h3>
-                        <p class="text-sm text-center">Posted on: ${post.date}</p>
-                        <p class="text-sm text-center">Category: ${post.category}</p>
-                        ${post.imageUrl ? `
-                            <!-- Updated aspect ratio for a taller image container -->
-                            <div class="relative w-full h-96 overflow-hidden mt-4 mb-4">
-                                <img src="${post.imageUrl}" alt="${post.title}" class="absolute top-0 left-0 w-full h-full object-cover" />
-                                <img src="${kAndkLogoUrl}" alt="Kwality & Klarity Logo" class="absolute bottom-2 right-2 w-8 h-8 opacity-75" />
-                            </div>
-                        ` : ''}
-                        <p class="mt-2 text-center">${post.content}</p>
-                    </div>
-                `;
-                container.innerHTML += postElement;
-            });
-
-            // Update active filter button styling
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('border-b-2', 'border-black', 'pb-1');
-                btn.classList.add('hover:underline');
-            });
-            const activeBtn = document.querySelector(`.filter-btn[data-filter="${category}"]`);
-            if (activeBtn) {
-                activeBtn.classList.remove('hover:underline');
-                activeBtn.classList.add('border-b-2', 'border-black', 'pb-1');
+            {
+                title: 'A Spotlight on South Africa\'s Burgeoning Streetwear Scene',
+                date: '2024-08-02',
+                content: 'We take a look at the innovative designers and brands that are defining the future of South African streetwear, blending local culture with global trends.',
+                fullContent: `South Africa's streetwear scene is experiencing a renaissance, with a new wave of designers and brands making their mark on the global stage. This article shines a spotlight on the pioneers who are blending local aesthetics with international trends, creating clothing that is not only stylish but also rich in cultural narrative. We showcase the brands to watch, the designers to follow, and the movements that are shaping the future of fashion. From bold graphics to sustainable materials, these innovators are proving that African streetwear is a force to be reckoned with.`,
+                category: 'fashion',
+                imageUrl: 'https://i.ibb.co/D8f122D0/Screenshot-2025-08-04-at-9-54-32-PM.webp'
             }
-        }
-        
-        // Function to display a full blog post
-        function showBlogPost(postIndex) {
-            const mainContentDiv = document.getElementById('main-content');
-            const post = blogPosts[postIndex];
+        ];
 
-            // A function to generate the Instagram embed section
-            const generateInstagramEmbeds = () => {
-                return `
-                    <div class="mt-16 w-full text-center">
-                        <h3 class="text-3xl font-bold mb-8">LATEST FROM OUR INSTAGRAM</h3>
-                        <div class="grid grid-cols-1 gap-4 md:gap-x-8 md:gap-y-12 w-full mx-auto max-w-sm">
-                            <!-- Instagram Embed 1 - Post about Puma x Outlander Magazine -->
-                            <div class="w-full relative aspect-[4/5] rounded-xl overflow-hidden shadow-[4px_4px_0_0_#000] border-4 border-black">
-                                <iframe 
-                                    class="absolute top-0 left-0 w-full h-full"
-                                    src="https://www.instagram.com/p/C-iH79_yYhH/embed/" 
-                                    frameborder="0" 
-                                    scrolling="no" 
-                                    allowtransparency="true" 
-                                    allowfullscreen>
-                                </iframe>
-                            </div>
-                        </div>
-                        <!-- Link to the full Instagram profile -->
-                        <a href="https://www.instagram.com/kwalityandklarity/" target="_blank" class="mt-8 px-6 py-3 border-4 border-black rounded-xl shadow-[4px_4px_0_0_#000] text-2xl font-bold inline-block hover:bg-gray-200 transition-colors">
-                            View our full Instagram
-                        </a>
-                    </div>
-                `;
-            };
-
-            const postDetailHtml = `
-                <div class="flex flex-col items-center w-full max-w-4xl text-left px-4">
-                    <button onclick="showPage('blog')" class="mb-8 px-4 py-2 border-4 border-black rounded-xl shadow-[4px_4px_0_0_#000] text-2xl hover:bg-gray-200 transition-colors">
-                        ← Back to Blog
-                    </button>
-                    <h2 class="text-5xl font-bold mb-4 text-center">${post.title}</h2>
-                    <p class="text-lg mb-4 text-center">Posted on: ${post.date} | Category: ${post.category}</p>
-                    ${post.imageUrl ? `
-                        <!-- Updated aspect ratio for a taller image container on the full page -->
-                        <div class="relative w-full max-h-[600px] aspect-video mb-8 border-4 border-black shadow-[4px_4px_0_0_#000]">
-                            <img src="${post.imageUrl}" alt="${post.title}" class="absolute top-0 left-0 w-full h-full object-cover" />
-                            <img src="${kAndkLogoUrl}" alt="Kwality & Klarity Logo" class="absolute bottom-2 right-2 w-12 h-12 opacity-75" />
-                        </div>
-                    ` : ''}
-                    <p class="text-xl leading-relaxed whitespace-pre-wrap">${post.fullContent}</p>
-
-                    <!-- Dynamically inject the Instagram embeds -->
-                    ${generateInstagramEmbeds()}
-                </div>
-            `;
-            mainContentDiv.innerHTML = postDetailHtml;
-        }
-
-        // Function to show a small message box
-        function showMessage(text) {
-            const messageBox = document.getElementById('message-box');
-            messageBox.textContent = text;
-            messageBox.classList.remove('hidden');
-            setTimeout(() => {
-                messageBox.classList.add('hidden');
-            }, 3000);
-        }
-
-        // Function to display the selected page content
-        function showPage(pageId) {
-            const body = document.body;
-            const mainContentDiv = document.getElementById('main-content');
-            const mainNav = document.getElementById('main-nav');
-            
-            // First, remove all home page specific classes
-            body.classList.remove('no-scroll', 'home-page-layout');
-            mainNav.classList.remove('home-nav-mobile');
-            mainNav.classList.remove('flex', 'flex-col', 'space-y-8', 'items-center', 'pt-16');
-            mainNav.classList.remove('mt-16', 'flex-row', 'space-x-4', 'justify-center', 'flex-wrap');
-
-
-            mainContentDiv.innerHTML = pages[pageId];
-
-            // Adjust layout based on the page
-            if (pageId === 'home') {
-                mainContentDiv.classList.add('hidden'); // Hide content div on home
-                
-                // Use the new class to apply a responsive layout for home page on mobile
-                body.classList.add('home-page-layout');
-
-                // Apply mobile-specific nav styling for home page
-                mainNav.classList.add('home-nav-mobile');
-                
-                // Set the default desktop layout for the home page nav
-                mainNav.classList.add('flex', 'md:flex-row', 'md:justify-center', 'md:space-x-16');
-
-
+        // This is a single-page application (SPA) router
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if the URL has a hash and show that page, otherwise show home.
+            if (window.location.hash) {
+                showPage(window.location.hash.substring(1));
             } else {
-                mainNav.classList.add('mt-16');
-                mainContentDiv.classList.remove('hidden'); // Show content on other pages
-                
-                // Set nav to horizontal for all screen sizes on other pages
-                mainNav.classList.add('flex', 'flex-row', 'space-x-4', 'justify-center', 'flex-wrap');
+                showPage('home');
+            }
+        });
 
-                // If it's the blog page, set up the filter functionality
-                if (pageId === 'blog') {
-                    filterPosts('all'); // Show all posts by default
-                    document.getElementById('filter-container').addEventListener('click', (e) => {
-                        if (e.target.tagName === 'BUTTON') {
-                            filterPosts(e.target.dataset.filter);
-                        }
-                    });
+        function showPage(pageId) {
+            // Find the correct content to display
+            const contentDiv = document.getElementById('main-content');
+            const navMenu = document.getElementById('main-nav');
+            const body = document.body;
+
+            // Clear any existing content
+            contentDiv.innerHTML = '';
+            
+            // Handle the home page separately
+            if (pageId === 'home') {
+                contentDiv.classList.add('hidden'); // Hide the content div
+                navMenu.classList.remove('hidden');
+                body.classList.add('homepage');
+                body.classList.remove('flex-center');
+                // Set the URL hash to a blank state for the home page
+                window.location.hash = '';
+                // Since there is no home page content, the nav will be centered on its own
+                // and the body classes handle the layout
+            } else {
+                // Show the main content area and hide the main nav
+                contentDiv.classList.remove('hidden');
+                navMenu.classList.add('hidden');
+                body.classList.remove('homepage');
+                body.classList.add('flex-center');
+                // Set the URL hash for the current page
+                window.location.hash = pageId;
+
+                // Inject the page's HTML
+                const pageHtml = pages[pageId];
+                if (pageHtml) {
+                    contentDiv.innerHTML = pageHtml;
                 }
             }
-        }
 
-        // Initially load the home page when the script runs
-        document.addEventListener('DOMContentLoaded', () => {
-            showPage('home');
-        });
+            // Specific logic for the blog page
+            if (pageId === 'blog') {
+                renderBlogPosts(blogPosts);
+                setupFilterListeners();
+            }
+        }
+        
+        function renderBlogPosts(posts) {
+            const container = document.getElementById('blog-posts-container');
+            if (!container) return; // Prevent errors if container isn't found
+            container.innerHTML = ''; // Clear previous posts
+            
+            posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.classList.add(
+                    'blog-post', 
+                    'cursor-pointer',
+                    'p-6',
+                    'border-4',
+                    'border-black',
+                    'rounded-xl',
+                    'shadow-[4px_4px_0_0_#000]',
+                    'hover:shadow-[8px_8px_0_0_#000]',
+                    'hover:transform',
+                    'hover:-translate-x-1',
+                    'hover:-translate-y-1',
+                    'transition-all',
+                    'duration-200'
+                );
+                postElement.setAttribute('data-category', post.category);
+                postElement.innerHTML = `
+                    <div class="mb-4 overflow-hidden rounded-lg">
+                        <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-auto object-cover">
+                    </div>
+                    <h3 class="text-3xl font-bold mb-2">${post.title}</h3>
+                    <p class="text-lg mb-2">${post.content}</p>
+                    <p class="text-sm text-gray-600">${post.date}</p>
+                `;
+                postElement.addEventListener('click', () => showFullPost(post));
+                container.appendChild(postElement);
+            });
+        }
+        
+        function setupFilterListeners() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const allButton = document.querySelector('[data-filter="all"]');
+            
+            // Add a click listener to each filter button
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+                    filterPosts(filter);
+                    // Update active state of buttons
+                    filterButtons.forEach(btn => btn.classList.remove('border-b-2', 'border-black', 'pb-1'));
+                    button.classList.add('border-b-2', 'border-black', 'pb-1');
+                });
+            });
+        }
+        
+        function filterPosts(filter) {
+            const container = document.getElementById('blog-posts-container');
+            const filteredPosts = filter === 'all' 
+                ? blogPosts
+                : blogPosts.filter(post => post.category === filter);
+            
+            renderBlogPosts(filteredPosts);
+        }
+        
+        function showFullPost(post) {
+            const contentDiv = document.getElementById('main-content');
+            contentDiv.innerHTML = `
+                <div class="flex flex-col items-center max-w-4xl p-4 md:p-8">
+                    <h2 class="text-4xl font-bold text-center mb-4">${post.title}</h2>
+                    <p class="text-md text-gray-600 mb-8">${post.date} | ${post.category}</p>
+                    <div class="mb-8 w-full overflow-hidden rounded-lg border-4 border-black shadow-[4px_4px_0_0_#000]">
+                        <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-auto object-cover">
+                    </div>
+                    <p class="text-xl mb-8 leading-relaxed text-center">${post.fullContent}</p>
+                    <button onclick="showPage('blog')" class="bg-black text-white px-8 py-4 text-2xl font-bold hover:bg-gray-800 transition-colors rounded-lg">
+                        BACK TO BLOG
+                    </button>
+                </div>
+            `;
+        }
     </script>
+
 </body>
 </html>
