@@ -1,0 +1,16 @@
+---
+permalink: "/posts.json"
+eleventyExcludeFromCollections: true
+---
+[
+{% for post in collections.posts %}
+  {
+    "title": {{ post.data.title | jsonify }},
+    "date": {{ post.date | dateISO | jsonify }},
+    "category": {{ (post.data.category or "") | jsonify }},
+    "cover": {{ (post.data.cover or "") | jsonify }},
+    "excerpt": {{ (post.data.excerpt or (post.templateContent | striptags | truncate(180))) | jsonify }},
+    "url": {{ post.url | url | jsonify }}
+  }{% if not loop.last %},{% endif %}
+{% endfor %}
+]
